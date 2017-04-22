@@ -1,0 +1,4 @@
+MaratonaXamarin.AndroidApp.MainActivity, MaratonaXamarin.AndroidApp;md5a62fc02047766c85be86d319601eb650.MainActivity
+MaratonaXamarin.AndroidApp.MainActivity, MaratonaXamarin.AndroidApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5a62fc02047766c85be86d319601eb650.MainActivity
+MaratonaXamarin.AndroidApp.MainActivity;md5a62fc02047766c85be86d319601eb650.MainActivity
+maratonaxamarin.androidapp.MainActivity;md5a62fc02047766c85be86d319601eb650.MainActivity
