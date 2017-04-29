@@ -4,12 +4,9 @@
              xmlns:local="clr-namespace:MonkeyHubApp"
              x:Class="MonkeyHubApp.MainPage">
 
-	<Label Text="{Binding Descricao}" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
-
-    <Label Text="{Binding Valor, StringFormat='{0:N2}'}" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
+    <StackLayout>
+        <Entry Text="{Binding SearchTerm}"/>
+        <Button Text="Pesquisar" Command="{Binding SearchCommand}"/>
+    </StackLayout>
 
 </ContentPage>
