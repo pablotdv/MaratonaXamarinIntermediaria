@@ -13,7 +13,7 @@ namespace MonkeyHubApp
         {
             InitializeComponent();
 
-            MainPage = new MonkeyHubApp.MainPage();
+            MainPage = new NavigationPage(new MainPage());
         }
 
         protected override void OnStart()
