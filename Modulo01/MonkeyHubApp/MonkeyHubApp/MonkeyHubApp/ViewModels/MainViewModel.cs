@@ -10,11 +10,38 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using System.IO;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using Newtonsoft.Json;
+using MonkeyHubApp.Models;
 
 namespace MonkeyHubApp.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
+        private const string BaseUrl = "https://monkey-hub-api.azurewebsites.net/api/";
+
+        public async Task<List<Tag>> GetTagsAsync()
+        {
+            var httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            var response = await httpClient.GetAsync($"{BaseUrl}Tags").ConfigureAwait(false);
+
+            if (response.IsSuccessStatusCode)
+            {
+                using (var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
+                {
+                    return JsonConvert.DeserializeObject<List<Tag>>(
+                        await new StreamReader(responseStream)
+                            .ReadToEndAsync().ConfigureAwait(false));
+                }
+            }
+
+            return null;
+        }
+
         private string _searchTerm;
 
         public string SearchTerm
@@ -27,14 +54,14 @@ namespace MonkeyHubApp.ViewModels
             }
         }
 
-        public ObservableCollection<string> Resultados { get; }
+        public ObservableCollection<Tag> Resultados { get; }
 
         public Command SearchCommand { get; }
 
         public MainViewModel()
         {
             SearchCommand = new Command(ExecuteSearchCommand, CanExecuteSearchCommand);
-            Resultados = new ObservableCollection<string>(new[] { "abc", "cde", "1", "2", "3", "4", "5", "6", "7", "8" });
+            Resultados = new ObservableCollection<Tag>();
         }
 
         private bool CanExecuteSearchCommand(object arg)
@@ -50,10 +77,14 @@ namespace MonkeyHubApp.ViewModels
             if (resposta)
             {
                 await App.Current.MainPage.DisplayAlert("MonkeyHubApp", $"Obrigado.", "Ok");
+                var tags = await GetTagsAsync();
                 Resultados.Clear();
-                for (int i = 1; i <= 30; i++)
+                if (tags != null)
                 {
-                    Resultados.Add($"Sim {i}");
+                    foreach (var tag in tags)
+                    {
+                        Resultados.Add(tag);
+                    }
                 }
             }
             else
