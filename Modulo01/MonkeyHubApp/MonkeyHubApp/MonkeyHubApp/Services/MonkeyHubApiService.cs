@@ -8,7 +8,9 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using Newtonsoft.Json;
 using System.IO;
+using Xamarin.Forms;
 
+[assembly: Dependency(typeof(MonkeyHubApp.Services.MonkeyHubApiService))]
 namespace MonkeyHubApp.Services
 {
     public class MonkeyHubApiService : IMonkeyHubApiService

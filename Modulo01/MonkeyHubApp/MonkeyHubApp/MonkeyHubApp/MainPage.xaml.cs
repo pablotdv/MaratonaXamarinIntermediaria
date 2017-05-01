@@ -16,7 +16,8 @@ namespace MonkeyHubApp
         public MainPage()
         {
             InitializeComponent();
-            BindingContext = new MainViewModel(new MonkeyHubApiService());
+            var monkeyHubApiService = DependencyService.Get<IMonkeyHubApiService>();
+            BindingContext = new MainViewModel(monkeyHubApiService);
         }
 
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
