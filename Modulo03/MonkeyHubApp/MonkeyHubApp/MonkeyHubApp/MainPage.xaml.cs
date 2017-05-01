@@ -12,7 +12,7 @@ namespace MonkeyHubApp
         {
             InitializeComponent();
             var monkeyHubApiService = DependencyService.Get<IMonkeyHubApiService>();
-            BindingContext = new MainViewModel(monkeyHubApiService);
+            BindingContext = new MainViewModel(monkeyHubApiService);                        
         }
 
         protected override async void OnAppearing()

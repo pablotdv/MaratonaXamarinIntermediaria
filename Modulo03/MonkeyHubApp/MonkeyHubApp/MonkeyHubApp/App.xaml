@@ -4,7 +4,20 @@
              x:Class="MonkeyHubApp.App">
     <Application.Resources>
 
-        <!-- Application resource dictionary -->
+        <ResourceDictionary>
+            <Color x:Key="minhaCor">Red</Color>
+            <Font x:Key="minhaFonte">Small</Font>
+
+            <Style x:Key="danger" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Red"/>
+                <Setter Property="Font" Value="{StaticResource minhaFonte}"/>
+            </Style>
+
+            <Style x:Key="info" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Blue"/>
+                <Setter Property="Font" Value="Large"/>
+            </Style>
+        </ResourceDictionary>
 
     </Application.Resources>
 </Application>
