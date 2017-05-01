@@ -3,8 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MonkeyHubApp.MainPage">
 
-	<Label Text="Welcome to Xamarin Forms!" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <RowDefinition Height="100" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Label Text="L0 C0" Grid.Row="0" Grid.Column="0"/>
+        <Label Text="L0 C1" Grid.Row="0" Grid.Column="1"/>
+        <Label Text="L1 C0" Grid.Row="1" Grid.Column="0"/>
+        <Label Text="L1 C1" Grid.Row="1" Grid.Column="1"/>
+        
+    </Grid>
 
 </ContentPage>
