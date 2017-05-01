@@ -15,6 +15,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using Newtonsoft.Json;
 using MonkeyHubApp.Models;
+using MonkeyHubApp.Services;
 
 namespace MonkeyHubApp.ViewModels
 {
@@ -59,11 +60,14 @@ namespace MonkeyHubApp.ViewModels
         public Command SearchCommand { get; }
         public Command AboutCommand { get; }
 
-        public MainViewModel()
+        private readonly IMonkeyHubApiservice _monkeyHubApiService;
+
+        public MainViewModel(IMonkeyHubApiservice monkeyHubApiService)
         {
             SearchCommand = new Command(ExecuteSearchCommand, CanExecuteSearchCommand);
             AboutCommand = new Command(ExecuteAboutCommand);
             Resultados = new ObservableCollection<Tag>();
+            _monkeyHubApiService = monkeyHubApiService;
         }
 
         async void ExecuteAboutCommand(object obj)
@@ -84,7 +88,7 @@ namespace MonkeyHubApp.ViewModels
             if (resposta)
             {
                 await App.Current.MainPage.DisplayAlert("MonkeyHubApp", $"Obrigado.", "Ok");
-                var tags = await GetTagsAsync();
+                var tags = await _monkeyHubApiService.GetTagsAsync();
                 Resultados.Clear();
                 if (tags != null)
                 {
