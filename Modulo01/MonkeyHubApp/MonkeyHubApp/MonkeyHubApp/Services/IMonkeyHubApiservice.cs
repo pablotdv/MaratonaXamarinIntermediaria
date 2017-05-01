@@ -7,12 +7,10 @@ using System.Threading.Tasks;
 
 namespace MonkeyHubApp.Services
 {
-    public interface IMonkeyHubApiservice
+    public interface IMonkeyHubApiService
     {
+        Task<List<Content>> GetContentsByTagIdAsync(string tagId);
         Task<List<Tag>> GetTagsAsync();
-
-        Task<List<Content>> GetContentsByIdAsync(string tagId);
-
         Task<List<Content>> GetContentsByFilterAsync(string filter);
     }
 }

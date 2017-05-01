@@ -4,12 +4,13 @@
              xmlns:local="clr-namespace:MonkeyHubApp"
              x:Class="MonkeyHubApp.MainPage"
              Title="Página Inicial">
-
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Tela sobre" Command="{Binding AboutCommand}"/>
+    </ContentPage.ToolbarItems>
     <StackLayout>
-        <Button Text="Tela Sobre" Command="{Binding AboutCommand}"/>
         <Entry Text="{Binding SearchTerm}"/>
         <Button Text="Pesquisar" Command="{Binding SearchCommand}"/>
-        <ListView ItemsSource="{Binding Resultados}">
+        <ListView ItemsSource="{Binding Resultados}" ItemSelected="ListView_ItemSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell Text="{Binding Name}" Detail="{Binding Description}"/>

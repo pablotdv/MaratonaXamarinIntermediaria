@@ -1,4 +1,5 @@
-﻿using MonkeyHubApp.ViewModels;
+﻿using MonkeyHubApp.Services;
+using MonkeyHubApp.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,20 @@ namespace MonkeyHubApp
 {
     public partial class MainPage : ContentPage
     {
+        private MainViewModel ViewModel => BindingContext as MainViewModel;
+
         public MainPage()
         {
             InitializeComponent();
-            BindingContext = new MainViewModel();
-        }        
+            BindingContext = new MainViewModel(new MonkeyHubApiService());
+        }
+
+        private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (e.SelectedItem != null)
+            {
+                ViewModel.ShowCategoriaCommand.Execute(e.SelectedItem);
+            }
+        }
     }
 }
