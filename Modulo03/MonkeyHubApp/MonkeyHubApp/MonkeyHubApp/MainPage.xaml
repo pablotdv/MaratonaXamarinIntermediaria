@@ -1,22 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MonkeyHubApp.MainPage">
+             x:Class="MonkeyHubApp.MainPage"
+             xmlns:controls="clr-namespace:MonkeyHubApp.Controls;assembly:MonkeyHubApp"
+             Title="Categorias">
 
-    <StackLayout>
-        <Label Text="Meu Texto 0" Font="{StaticResource minhaFonte}" TextColor="{StaticResource minhaCor}" />
-        <Label Text="Meu Texto 1" Font="{StaticResource minhaFonte}" TextColor="{StaticResource minhaCor}" />
-        <Label Text="Meu Texto 2" Font="{StaticResource minhaFonte}" TextColor="{StaticResource minhaCor}" />
-        <Label Text="Meu Texto 3" Font="{StaticResource minhaFonte}" TextColor="{StaticResource minhaCor}" />
-
-        <Button Text="Excluir" Style="{StaticResource danger}"/>
-        <Button Text="Salvar" Style="{StaticResource info}"/>
-
-        <Button Text="Remover Item" Style="{StaticResource danger}"/>
-        <Button Text="Incluir Item" Style="{StaticResource info}"/>
-
-        
-        <Button x:Name="btnNavegar" Text="Navegar"/>
-    </StackLayout>
+    <controls:MyListView x:Name="lvwTags"
+                         ItemsSource="{Binding Tags}" 
+                         HasUnevenRows="True"
+                         ItemTappedCommand="{Binding ShowCategoriaCommand}">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout Padding="20">
+                        <Label Text="{Binding Name}" 
+                               TextColor="Black" 
+                               FontSize="Large"/>
+                        <Label Text="{Binding Description}" 
+                               TextColor="Gray" 
+                               FontSize="Medium"/>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </controls:MyListView>
 
 </ContentPage>

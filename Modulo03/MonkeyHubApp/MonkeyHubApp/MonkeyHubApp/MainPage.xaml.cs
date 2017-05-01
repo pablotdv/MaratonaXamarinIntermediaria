@@ -12,18 +12,14 @@ namespace MonkeyHubApp
         {
             InitializeComponent();
             var monkeyHubApiService = DependencyService.Get<IMonkeyHubApiService>();
-            BindingContext = new MainViewModel(monkeyHubApiService);
-            btnNavegar.Clicked += async (sender, e) =>
-            {
-                await Navigation.PushAsync(new CategoriaPage());
-            };
+            BindingContext = new MainViewModel(monkeyHubApiService);           
         }
 
         protected override async void OnAppearing()
         {
             base.OnAppearing();
 
-            if(ViewModel != null)
+            if (ViewModel != null)
                 await ViewModel.LoadAsync();
         }
     }
