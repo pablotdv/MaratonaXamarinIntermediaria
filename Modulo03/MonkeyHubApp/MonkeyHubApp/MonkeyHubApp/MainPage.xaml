@@ -5,6 +5,9 @@
              xmlns:controls="clr-namespace:MonkeyHubApp.Controls;assembly:MonkeyHubApp"
              Title="Categorias">
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Sobre" Command="{Binding AboutCommand}"/>
+    </ContentPage.ToolbarItems>
     <controls:MyListView x:Name="lvwTags"
                          ItemsSource="{Binding Tags}" 
                          HasUnevenRows="True"
