@@ -22,8 +22,6 @@ namespace MonkeyHubApp.ViewModels
 
             Contents = new ObservableCollection<Content>();
             ShowContentCommand = new Command<Content>(ExecuteShowContentCommand);
-
-            Title = "Eventos";
         }
 
         private async void ExecuteShowContentCommand(Content content)
@@ -31,7 +29,7 @@ namespace MonkeyHubApp.ViewModels
             await PushAsync<ContentWebViewModel>(content);
         }
 
-        public override async Task LoadAsync()
+        public async Task LoadAsync()
         {
             var contents = await _monkeyHubApiService.GetContentsByTagIdAsync(_tag.Id);
 

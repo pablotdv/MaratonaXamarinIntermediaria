@@ -1,6 +1,4 @@
-﻿using MonkeyHubApp.Services;
-using MonkeyHubApp.ViewModels;
-using Xamarin.Forms;
+﻿using MonkeyHubApp.ViewModels;
 
 namespace MonkeyHubApp
 {
@@ -13,12 +11,12 @@ namespace MonkeyHubApp
             InitializeComponent();
         }
 
-        private void ListView_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
+        protected override async void OnAppearing()
         {
-            if (e.SelectedItem != null)
-            {
-                ViewModel.ShowContentCommand.Execute(e.SelectedItem);
-            }
+            base.OnAppearing();
+
+            if (ViewModel != null)
+                await ViewModel.LoadAsync();
         }
     }
 }
