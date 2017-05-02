@@ -7,6 +7,7 @@
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Sobre" Command="{Binding AboutCommand}"/>
+        <ToolbarItem Text="Buscar" Command="{Binding SearchCommand}"/>
     </ContentPage.ToolbarItems>
     <controls:MyListView x:Name="lvwTags"
                          ItemsSource="{Binding Tags}" 
