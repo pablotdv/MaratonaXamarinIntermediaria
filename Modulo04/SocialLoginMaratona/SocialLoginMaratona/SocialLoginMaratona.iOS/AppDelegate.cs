@@ -23,6 +23,9 @@ namespace SocialLoginMaratona.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+
+            Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
+
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

@@ -13,7 +13,7 @@ namespace SocialLoginMaratona
         {
             InitializeComponent();
 
-            MainPage = new SocialLoginMaratona.MainPage();
+            MainPage = new NavigationPage(new SocialLoginMaratona.Views.LoginPage());
         }
 
         protected override void OnStart()
